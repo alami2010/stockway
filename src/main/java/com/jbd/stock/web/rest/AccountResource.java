@@ -7,16 +7,20 @@ import com.jbd.stock.service.MailService;
 import com.jbd.stock.service.UserService;
 import com.jbd.stock.service.dto.AdminUserDTO;
 import com.jbd.stock.service.dto.PasswordChangeDTO;
+import com.jbd.stock.utils.Utils;
 import com.jbd.stock.web.rest.errors.*;
 import com.jbd.stock.web.rest.vm.KeyAndPasswordVM;
 import com.jbd.stock.web.rest.vm.ManagedUserVM;
+import java.io.File;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
