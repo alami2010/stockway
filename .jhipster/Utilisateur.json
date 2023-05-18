@@ -1,0 +1,83 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152054",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "utilisateur",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "information",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "UserType",
+      "fieldValues": "CLIENT,USER,SUPPLIER"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Utilisateur",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "paiement",
+      "otherEntityRelationshipName": "user",
+      "relationshipName": "paiement",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "user",
+      "relationshipName": "order",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "role",
+      "otherEntityRelationshipName": "users",
+      "ownerSide": true,
+      "relationshipName": "roles",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

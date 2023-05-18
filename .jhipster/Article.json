@@ -1,0 +1,77 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152103",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "article",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prixAchat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "qte",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "qteAlert",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Article",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "orderItem",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "orderItem",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "bonReceptionItem",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "bonReceptionItem",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "category",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "fournisseur",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "fournisseur",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

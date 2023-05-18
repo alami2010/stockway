@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152104",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "charge",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valeur",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Charge",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "typeCharge",
+      "otherEntityRelationshipName": "charge",
+      "relationshipName": "type",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

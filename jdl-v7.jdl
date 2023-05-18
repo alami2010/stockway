@@ -1,0 +1,178 @@
+
+
+
+entity Utilisateur {
+	id Long,
+    code String,
+    nom String,
+    prenom String,
+    dateCreation LocalDate,
+    status String,
+    phone String,
+    email String,
+    information String,
+    type UserType
+}
+
+
+
+
+entity Paiement {
+	id Long,
+    remunuration Double,
+    dateCreation LocalDate
+}
+
+
+
+
+entity Category {
+	id Long,
+    code String,
+    libelle String
+}
+
+
+entity Fournisseur {
+	id Long,
+    code String,
+    ville String,
+    adresse String,
+    activite String,
+    nom String,
+    description String
+}
+
+
+entity BonReception {
+	id Long,
+    informaton String,
+    numFacture Integer,
+    numBl Integer,
+    dateCreation LocalDate
+}
+
+entity BonReceptionItem {
+	id Long,
+    qte Double
+}
+
+
+entity Role {
+	id Long,
+    name String,
+}
+
+
+entity Order {
+  date LocalDate,
+  clientName String,
+  clientContact String,
+  subTotal Double,
+  vat String,
+  totalAmount Double,
+  discount Double,
+  grandTotal String,
+  paid Boolean,
+  due String,
+  paymentType PaymentType,
+  paymentStatus PaymentStatus,
+  status String
+}
+
+entity OrderItem {
+  quantity String,
+  rate String,
+  prixVente Double,
+  status OrderStatus
+}
+
+
+
+enum PaymentType {
+    CHEQUE, CARD, CACHE
+}
+
+enum OrderStatus {
+    STATUS1, STATUS1, STATUS1
+}
+
+enum PaymentStatus {
+    FULL, ADVANCE, NONE
+}
+
+enum UserType {
+    CLIENT, USER, SUPPLIER
+}
+
+entity Article {
+	id Long,
+    code String,
+    nom String,
+    description String,
+    prixAchat Double,
+    qte Double,
+    qteAlert Double,
+    status String,
+    dateCreation LocalDate
+
+}
+
+
+entity Charge {
+	id Long,
+    nom String,
+    valeur Double,
+    dateCreation LocalDate
+
+}
+
+
+entity TypeCharge {
+	id Long,
+    nom String
+}
+
+
+
+
+relationship OneToMany {
+	Category to Article {category},
+    Fournisseur to BonReception {fournisseur},
+    Fournisseur to  Article{fournisseur},
+    Utilisateur to Paiement{user},
+    Utilisateur to Order{user},
+    Article  to OrderItem{article},
+    Order to  OrderItem{order},
+    BonReception to  BonReceptionItem{bon},
+    Article to  BonReceptionItem{article},
+    TypeCharge to  Charge{type}
+}
+
+
+relationship OneToOne {
+   Utilisateur {user} to User
+}
+
+relationship ManyToMany {
+
+     Utilisateur{roles} to Role{users}
+
+}
+
+filter *
+paginate Order with pagination
+paginate OrderItem with pagination
+paginate Fournisseur with pagination
+paginate TypeCharge with pagination
+paginate BonReception with pagination
+paginate Charge with pagination
+paginate Paiement with pagination
+paginate Category with pagination
+paginate Article with pagination
+paginate Utilisateur with pagination
+
+dto * with mapstruct
+
+service all with serviceImpl
+

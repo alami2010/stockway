@@ -1,0 +1,173 @@
+<div>
+  <h2 id="page-heading" data-cy="FournisseurHeading">
+    <span jhiTranslate="stockwayApp.fournisseur.home.title">Fournisseurs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="stockwayApp.fournisseur.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-fournisseur"
+        [routerLink]="['/fournisseur/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="stockwayApp.fournisseur.home.createLabel"> Créer un nouveau Fournisseur </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fournisseurs?.length === 0">
+    <span jhiTranslate="stockwayApp.fournisseur.home.notFound">Aucun Fournisseur trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="fournisseurs && fournisseurs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.fournisseur.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.fournisseur.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ville">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.fournisseur.ville">Ville</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="adresse">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.fournisseur.adresse">Adresse</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="activite">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.fournisseur.activite">Activite</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.fournisseur.nom">Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.fournisseur.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fournisseur of fournisseurs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/fournisseur', fournisseur.id, 'view']">{{ fournisseur.id }}</a>
+          </td>
+          <td>{{ fournisseur.code }}</td>
+          <td>{{ fournisseur.ville }}</td>
+          <td>{{ fournisseur.adresse }}</td>
+          <td>{{ fournisseur.activite }}</td>
+          <td>{{ fournisseur.nom }}</td>
+          <td>{{ fournisseur.description }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/bon-reception']"
+                [queryParams]="{ 'filter[fournisseurId.in]': fournisseur.id }"
+                class="btn btn-info btn-sm"
+                data-cy="filterOtherEntityButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span
+                  class="d-none d-md-inline"
+                  jhiTranslate="entity.action.show"
+                  [translateValues]="{ otherEntity: ('stockwayApp.fournisseur.bonReception' | translate) }"
+                  >Show Bon Reception</span
+                >
+              </button>
+              <button
+                type="submit"
+                [routerLink]="['/article']"
+                [queryParams]="{ 'filter[fournisseurId.in]': fournisseur.id }"
+                class="btn btn-info btn-sm"
+                data-cy="filterOtherEntityButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span
+                  class="d-none d-md-inline"
+                  jhiTranslate="entity.action.show"
+                  [translateValues]="{ otherEntity: ('stockwayApp.fournisseur.article' | translate) }"
+                  >Show Article</span
+                >
+              </button>
+              <button
+                type="submit"
+                [routerLink]="['/fournisseur', fournisseur.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/fournisseur', fournisseur.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(fournisseur)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="fournisseurs && fournisseurs.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

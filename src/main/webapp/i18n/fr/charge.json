@@ -1,0 +1,27 @@
+{
+  "stockwayApp": {
+    "charge": {
+      "home": {
+        "title": "Charges",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Charge",
+        "createOrEditLabel": "Créer ou éditer un Charge",
+        "notFound": "Aucun Charge trouvé"
+      },
+      "created": "Un nouveau Charge a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Charge avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Charge avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Charge {{ id }} ?"
+      },
+      "detail": {
+        "title": "Charge"
+      },
+      "id": "Id",
+      "nom": "Nom",
+      "valeur": "Valeur",
+      "dateCreation": "Date Creation",
+      "type": "Type"
+    }
+  }
+}

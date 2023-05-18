@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="order">
+      <h2 data-cy="orderDetailsHeading"><span jhiTranslate="stockwayApp.order.detail.title">Order</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ order.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.date">Date</span></dt>
+        <dd>
+          <span>{{ order.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.clientName">Client Name</span></dt>
+        <dd>
+          <span>{{ order.clientName }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.clientContact">Client Contact</span></dt>
+        <dd>
+          <span>{{ order.clientContact }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.subTotal">Sub Total</span></dt>
+        <dd>
+          <span>{{ order.subTotal }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.vat">Vat</span></dt>
+        <dd>
+          <span>{{ order.vat }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.totalAmount">Total Amount</span></dt>
+        <dd>
+          <span>{{ order.totalAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.discount">Discount</span></dt>
+        <dd>
+          <span>{{ order.discount }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.grandTotal">Grand Total</span></dt>
+        <dd>
+          <span>{{ order.grandTotal }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.paid">Paid</span></dt>
+        <dd>
+          <span>{{ order.paid }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.due">Due</span></dt>
+        <dd>
+          <span>{{ order.due }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.paymentType">Payment Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'stockwayApp.PaymentType.' + order.paymentType }}">{{ order.paymentType }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.paymentStatus">Payment Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'stockwayApp.PaymentStatus.' + order.paymentStatus }}">{{ order.paymentStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.status">Status</span></dt>
+        <dd>
+          <span>{{ order.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.order.user">User</span></dt>
+        <dd>
+          <div *ngIf="order.user">
+            <a [routerLink]="['/utilisateur', order.user.id, 'view']">{{ order.user.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/order', order.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

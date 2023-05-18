@@ -1,0 +1,37 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152059",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "bon_reception_item",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "qte",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "BonReceptionItem",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "bonReception",
+      "otherEntityRelationshipName": "bonReceptionItem",
+      "relationshipName": "bon",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "article",
+      "otherEntityRelationshipName": "bonReceptionItem",
+      "relationshipName": "article",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

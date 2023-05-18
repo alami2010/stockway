@@ -1,0 +1,165 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-order-heading" data-cy="OrderCreateUpdateHeading" jhiTranslate="stockwayApp.order.home.createOrEditLabel">
+        Créer ou éditer un Order
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.clientName" for="field_clientName">Client Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="clientName"
+            id="field_clientName"
+            data-cy="clientName"
+            formControlName="clientName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.clientContact" for="field_clientContact">Client Contact</label>
+          <input
+            type="text"
+            class="form-control"
+            name="clientContact"
+            id="field_clientContact"
+            data-cy="clientContact"
+            formControlName="clientContact"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.subTotal" for="field_subTotal">Sub Total</label>
+          <input type="number" class="form-control" name="subTotal" id="field_subTotal" data-cy="subTotal" formControlName="subTotal" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.vat" for="field_vat">Vat</label>
+          <input type="text" class="form-control" name="vat" id="field_vat" data-cy="vat" formControlName="vat" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.totalAmount" for="field_totalAmount">Total Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalAmount"
+            id="field_totalAmount"
+            data-cy="totalAmount"
+            formControlName="totalAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.discount" for="field_discount">Discount</label>
+          <input type="number" class="form-control" name="discount" id="field_discount" data-cy="discount" formControlName="discount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.grandTotal" for="field_grandTotal">Grand Total</label>
+          <input
+            type="text"
+            class="form-control"
+            name="grandTotal"
+            id="field_grandTotal"
+            data-cy="grandTotal"
+            formControlName="grandTotal"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.paid" for="field_paid">Paid</label>
+          <input type="checkbox" class="form-check" name="paid" id="field_paid" data-cy="paid" formControlName="paid" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.due" for="field_due">Due</label>
+          <input type="text" class="form-control" name="due" id="field_due" data-cy="due" formControlName="due" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.paymentType" for="field_paymentType">Payment Type</label>
+          <select class="form-control" name="paymentType" formControlName="paymentType" id="field_paymentType" data-cy="paymentType">
+            <option [ngValue]="null">{{ 'stockwayApp.PaymentType.null' | translate }}</option>
+            <option *ngFor="let paymentType of paymentTypeValues" [value]="paymentType">
+              {{ 'stockwayApp.PaymentType.' + paymentType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.paymentStatus" for="field_paymentStatus">Payment Status</label>
+          <select
+            class="form-control"
+            name="paymentStatus"
+            formControlName="paymentStatus"
+            id="field_paymentStatus"
+            data-cy="paymentStatus"
+          >
+            <option [ngValue]="null">{{ 'stockwayApp.PaymentStatus.null' | translate }}</option>
+            <option *ngFor="let paymentStatus of paymentStatusValues" [value]="paymentStatus">
+              {{ 'stockwayApp.PaymentStatus.' + paymentStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.status" for="field_status">Status</label>
+          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.order.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUtilisateur">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="utilisateurOption" *ngFor="let utilisateurOption of utilisateursSharedCollection">
+              {{ utilisateurOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

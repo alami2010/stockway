@@ -1,0 +1,75 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="utilisateur">
+      <h2 data-cy="utilisateurDetailsHeading"><span jhiTranslate="stockwayApp.utilisateur.detail.title">Utilisateur</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockwayApp.utilisateur.id">Id</span></dt>
+        <dd>
+          <span>{{ utilisateur.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.code">Code</span></dt>
+        <dd>
+          <span>{{ utilisateur.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.nom">Nom</span></dt>
+        <dd>
+          <span>{{ utilisateur.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ utilisateur.prenom }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.dateCreation">Date Creation</span></dt>
+        <dd>
+          <span>{{ utilisateur.dateCreation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.status">Status</span></dt>
+        <dd>
+          <span>{{ utilisateur.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.phone">Phone</span></dt>
+        <dd>
+          <span>{{ utilisateur.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.email">Email</span></dt>
+        <dd>
+          <span>{{ utilisateur.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.information">Information</span></dt>
+        <dd>
+          <span>{{ utilisateur.information }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'stockwayApp.UserType.' + utilisateur.type }}">{{ utilisateur.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.user">User</span></dt>
+        <dd>
+          <span>{{ utilisateur.user?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.utilisateur.roles">Roles</span></dt>
+        <dd>
+          <span *ngFor="let roles of utilisateur.roles; let last = last">
+            <a [routerLink]="['/role', roles.id, 'view']">{{ roles.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/utilisateur', utilisateur.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

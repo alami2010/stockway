@@ -1,0 +1,10 @@
+{
+  "stockwayApp": {
+    "UserType": {
+      "null": "",
+      "CLIENT": "CLIENT",
+      "USER": "USER",
+      "SUPPLIER": "SUPPLIER"
+    }
+  }
+}

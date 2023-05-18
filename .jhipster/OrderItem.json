@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152102",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "order_item",
+  "fields": [
+    {
+      "fieldName": "quantity",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prixVente",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrderStatus",
+      "fieldValues": "STATUS1"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "OrderItem",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "article",
+      "otherEntityRelationshipName": "orderItem",
+      "relationshipName": "article",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "orderItem",
+      "relationshipName": "order",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

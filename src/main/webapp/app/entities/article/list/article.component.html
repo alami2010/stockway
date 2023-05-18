@@ -1,0 +1,200 @@
+<div>
+  <h2 id="page-heading" data-cy="ArticleHeading">
+    <span jhiTranslate="stockwayApp.article.home.title">Articles</span>
+
+    <div class="d-flex justify-content-end">
+
+
+      <button class="btn btn-success me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon [spin]="isLoading"></fa-icon>
+        <span  >Charger un fichier</span>
+      </button>
+
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="stockwayApp.article.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-article"
+        [routerLink]="['/article/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="stockwayApp.article.home.createLabel"> Créer un nouveau Article </span>
+      </button>
+    </div>
+  </h2>
+
+
+  <div class="row">
+
+
+    <div class="col-md-2">
+      <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Recherche</label>
+        <input [(ngModel)]="currentSearchFilter" type="text" class="form-control" placeholder="Recherche" id="inputDefault">
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="exampleSelect1" class="col-form-label">Categorie</label>
+        <select  [(ngModel)]="currentStatusFilter" class="form-select" id="exampleSelect1">
+          <option   value="" > </option>
+          <option  *ngFor="let category of categories"  [value]="category.id" >{{category.libelle}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label class="col-form-label" for="inputDefault">&nbsp; </label> <label class="col-form-label" for="inputDefault">&nbsp; </label><br>
+      <button type="button" (click)="search()" class="btn btn-outline-primary">Chercher</button>
+
+      <button type="button" (click)="reset()" class="btn btn-outline-primary">Reset</button>
+    </div>
+
+
+
+  </div>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+
+
+
+
+
+
+
+  <div class="alert alert-warning" id="no-result" *ngIf="articles?.length === 0">
+    <span jhiTranslate="stockwayApp.article.home.notFound">Aucun Article trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="articles && articles.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.article.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+         <!-- <th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.article.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>-->
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.article.nom">Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+
+          <th scope="col" jhiSortBy="prixAchat">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.article.prixAchat">Prix</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="qte">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.article.qte">Qte</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+
+
+          <th scope="col" jhiSortBy="dateCreation">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.article.dateCreation">Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="category.id">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.article.category">Category</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of articles; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/article', article.id, 'view']">{{ article.id }}</a>
+          </td>
+         <!-- <td>{{ article.code }}</td>-->
+          <td>{{ article.nom }}</td>
+
+          <td>{{ article.prixAchat }}</td>
+          <td>{{ article.qte }}</td>
+
+          <td>{{ article.dateCreation | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="article.category">
+              <a [routerLink]="['/category', article.category.id, 'view']">{{ article.category.libelle }}</a>
+            </div>
+          </td>
+
+          <td class="text-end">
+            <div class="btn-group">
+
+              <button
+                type="submit"
+                [routerLink]="['/article', article.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/article', article.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(article)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="articles && articles.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

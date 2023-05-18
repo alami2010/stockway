@@ -1,0 +1,31 @@
+{
+  "stockwayApp": {
+    "fournisseur": {
+      "home": {
+        "title": "Fournisseurs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Fournisseur",
+        "createOrEditLabel": "Créer ou éditer un Fournisseur",
+        "notFound": "Aucun Fournisseur trouvé"
+      },
+      "created": "Un nouveau Fournisseur a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Fournisseur avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Fournisseur avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Fournisseur {{ id }} ?"
+      },
+      "detail": {
+        "title": "Fournisseur"
+      },
+      "id": "Id",
+      "code": "Code",
+      "ville": "Ville",
+      "adresse": "Adresse",
+      "activite": "Activite",
+      "nom": "Nom",
+      "description": "Description",
+      "bonReception": "Bon Reception",
+      "article": "Article"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bonReceptionItem">
+      <h2 data-cy="bonReceptionItemDetailsHeading">
+        <span jhiTranslate="stockwayApp.bonReceptionItem.detail.title">Bon Reception Item</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockwayApp.bonReceptionItem.id">Id</span></dt>
+        <dd>
+          <span>{{ bonReceptionItem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.bonReceptionItem.qte">Qte</span></dt>
+        <dd>
+          <span>{{ bonReceptionItem.qte }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.bonReceptionItem.bon">Bon</span></dt>
+        <dd>
+          <div *ngIf="bonReceptionItem.bon">
+            <a [routerLink]="['/bon-reception', bonReceptionItem.bon.id, 'view']">{{ bonReceptionItem.bon.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.bonReceptionItem.article">Article</span></dt>
+        <dd>
+          <div *ngIf="bonReceptionItem.article">
+            <a [routerLink]="['/article', bonReceptionItem.article.id, 'view']">{{ bonReceptionItem.article.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bon-reception-item', bonReceptionItem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "stockwayApp": {
+    "order": {
+      "home": {
+        "title": "Orders",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Order",
+        "createOrEditLabel": "Créer ou éditer un Order",
+        "notFound": "Aucun Order trouvé"
+      },
+      "created": "Un nouveau Order a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Order avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Order avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Order {{ id }} ?"
+      },
+      "detail": {
+        "title": "Order"
+      },
+      "id": "ID",
+      "date": "Date",
+      "clientName": "Client Name",
+      "clientContact": "Client Contact",
+      "subTotal": "Sub Total",
+      "vat": "Vat",
+      "totalAmount": "Total Amount",
+      "discount": "Discount",
+      "grandTotal": "Grand Total",
+      "paid": "Paid",
+      "due": "Due",
+      "paymentType": "Payment Type",
+      "paymentStatus": "Payment Status",
+      "status": "Status",
+      "orderItem": "Order Item",
+      "user": "User"
+    }
+  }
+}

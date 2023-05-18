@@ -1,0 +1,110 @@
+<div>
+  <h2 id="page-heading" data-cy="BonReceptionItemHeading">
+    <span jhiTranslate="stockwayApp.bonReceptionItem.home.title">BonReceptionItems</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="stockwayApp.bonReceptionItem.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-bon-reception-item"
+        [routerLink]="['/bon-reception-item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="stockwayApp.bonReceptionItem.home.createLabel"> Créer un nouveau Bon Reception Item </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="bonReceptionItems?.length === 0">
+    <span jhiTranslate="stockwayApp.bonReceptionItem.home.notFound">Aucun Bon Reception Item trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="bonReceptionItems && bonReceptionItems.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.bonReceptionItem.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="qte">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.bonReceptionItem.qte">Qte</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bon.id">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.bonReceptionItem.bon">Bon</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="article.id">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.bonReceptionItem.article">Article</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bonReceptionItem of bonReceptionItems; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/bon-reception-item', bonReceptionItem.id, 'view']">{{ bonReceptionItem.id }}</a>
+          </td>
+          <td>{{ bonReceptionItem.qte }}</td>
+          <td>
+            <div *ngIf="bonReceptionItem.bon">
+              <a [routerLink]="['/bon-reception', bonReceptionItem.bon.id, 'view']">{{ bonReceptionItem.bon.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="bonReceptionItem.article">
+              <a [routerLink]="['/article', bonReceptionItem.article.id, 'view']">{{ bonReceptionItem.article.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/bon-reception-item', bonReceptionItem.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/bon-reception-item', bonReceptionItem.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(bonReceptionItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

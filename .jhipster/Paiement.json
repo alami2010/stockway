@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152055",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "paiement",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "remunuration",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Paiement",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "utilisateur",
+      "otherEntityRelationshipName": "paiement",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

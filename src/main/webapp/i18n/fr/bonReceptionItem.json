@@ -1,0 +1,26 @@
+{
+  "stockwayApp": {
+    "bonReceptionItem": {
+      "home": {
+        "title": "BonReceptionItems",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Bon Reception Item",
+        "createOrEditLabel": "Créer ou éditer un Bon Reception Item",
+        "notFound": "Aucun Bon Reception Item trouvé"
+      },
+      "created": "Un nouveau Bon Reception Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Bon Reception Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Bon Reception Item avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Bon Reception Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Bon Reception Item"
+      },
+      "id": "Id",
+      "qte": "Qte",
+      "bon": "Bon",
+      "article": "Article"
+    }
+  }
+}

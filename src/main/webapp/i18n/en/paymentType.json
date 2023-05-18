@@ -1,0 +1,10 @@
+{
+  "stockwayApp": {
+    "PaymentType": {
+      "null": "",
+      "CHEQUE": "CHEQUE",
+      "CARD": "CARD",
+      "CACHE": "CACHE"
+    }
+  }
+}

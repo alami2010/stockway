@@ -1,10 +1,19 @@
 
-  ${AnsiColor.GREEN}      ██╗${AnsiColor.RED} ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝
-  ${AnsiColor.GREEN}██╗   ██║${AnsiColor.RED} ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║
-  ${AnsiColor.GREEN}╚██████╔╝${AnsiColor.RED} ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗
-  ${AnsiColor.GREEN} ╚═════╝ ${AnsiColor.RED} ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝
+
+ ${AnsiColor.GREEN}  _________ __                 __     ${AnsiColor.RED} __      __  _____ _____.___.
+ ${AnsiColor.GREEN} /   _____//  |_  ____   ____ |  | __ ${AnsiColor.RED}/  \    /  \/  _  \\__  |   |
+ ${AnsiColor.GREEN} \_____  \\   __\/  _ \_/ ___\|  |/ / ${AnsiColor.RED}\   \/\/   /  /_\  \/   |   |
+ ${AnsiColor.GREEN} /        \|  | (  <_> )  \___|    <  ${AnsiColor.RED} \        /    |    \____   |
+ ${AnsiColor.GREEN}/_______  /|__|  \____/ \___  >__|_ \ ${AnsiColor.RED}  \__/\  /\____|__  / ______|
+ ${AnsiColor.GREEN}        \/                  \/     \/ ${AnsiColor.RED}       \/         \/\/
+
+
+
+
+
+${AnsiColor.BRIGHT_BLUE}:: JHipster 🤓  :: Running Spring Boot ${spring-boot.version} ::
+:: https://www.jhipster.tech ::${AnsiColor.DEFAULT}
+
 
 ${AnsiColor.BRIGHT_BLUE}:: JHipster 🤓  :: Running Spring Boot ${spring-boot.version} ::
 :: https://www.jhipster.tech ::${AnsiColor.DEFAULT}

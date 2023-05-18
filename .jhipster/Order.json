@@ -1,0 +1,83 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152101",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "jhi_order",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "clientName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "clientContact",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subTotal",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "vat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "discount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "grandTotal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paid",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "due",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentType",
+      "fieldType": "PaymentType",
+      "fieldValues": "CHEQUE,CARD,CACHE"
+    },
+    {
+      "fieldName": "paymentStatus",
+      "fieldType": "PaymentStatus",
+      "fieldValues": "FULL,ADVANCE,NONE"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Order",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "orderItem",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "orderItem",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "utilisateur",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

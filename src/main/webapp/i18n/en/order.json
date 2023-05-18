@@ -1,0 +1,38 @@
+{
+  "stockwayApp": {
+    "order": {
+      "home": {
+        "title": "Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Order",
+        "createOrEditLabel": "Create or edit a Order",
+        "notFound": "No Orders found"
+      },
+      "created": "A new Order is created with identifier {{ param }}",
+      "updated": "A Order is updated with identifier {{ param }}",
+      "deleted": "A Order is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Order"
+      },
+      "id": "ID",
+      "date": "Date",
+      "clientName": "Client Name",
+      "clientContact": "Client Contact",
+      "subTotal": "Sub Total",
+      "vat": "Vat",
+      "totalAmount": "Total Amount",
+      "discount": "Discount",
+      "grandTotal": "Grand Total",
+      "paid": "Paid",
+      "due": "Due",
+      "paymentType": "Payment Type",
+      "paymentStatus": "Payment Status",
+      "status": "Status",
+      "orderItem": "Order Item",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-bon-reception-heading"
+        data-cy="BonReceptionCreateUpdateHeading"
+        jhiTranslate="stockwayApp.bonReception.home.createOrEditLabel"
+      >
+        Créer ou éditer un Bon Reception
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="stockwayApp.bonReception.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.bonReception.informaton" for="field_informaton">Informaton</label>
+          <input
+            type="text"
+            class="form-control"
+            name="informaton"
+            id="field_informaton"
+            data-cy="informaton"
+            formControlName="informaton"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.bonReception.numFacture" for="field_numFacture">Num Facture</label>
+          <input
+            type="number"
+            class="form-control"
+            name="numFacture"
+            id="field_numFacture"
+            data-cy="numFacture"
+            formControlName="numFacture"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.bonReception.numBl" for="field_numBl">Num Bl</label>
+          <input type="number" class="form-control" name="numBl" id="field_numBl" data-cy="numBl" formControlName="numBl" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.bonReception.dateCreation" for="field_dateCreation">Date Creation</label>
+          <div class="input-group">
+            <input
+              id="field_dateCreation"
+              data-cy="dateCreation"
+              type="text"
+              class="form-control"
+              name="dateCreation"
+              ngbDatepicker
+              #dateCreationDp="ngbDatepicker"
+              formControlName="dateCreation"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateCreationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="stockwayApp.bonReception.fournisseur" for="field_fournisseur">Fournisseur</label>
+          <select
+            class="form-control"
+            id="field_fournisseur"
+            data-cy="fournisseur"
+            name="fournisseur"
+            formControlName="fournisseur"
+            [compareWith]="compareFournisseur"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="fournisseurOption" *ngFor="let fournisseurOption of fournisseursSharedCollection">
+              {{ fournisseurOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

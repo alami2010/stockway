@@ -1,0 +1,10 @@
+{
+  "stockwayApp": {
+    "PaymentStatus": {
+      "null": "",
+      "FULL": "FULL",
+      "ADVANCE": "ADVANCE",
+      "NONE": "NONE"
+    }
+  }
+}

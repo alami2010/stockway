@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="article">
+      <h2 data-cy="articleDetailsHeading"><span jhiTranslate="stockwayApp.article.detail.title">Article</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockwayApp.article.id">Code</span></dt>
+        <dd>
+          <span>{{ article.id }}</span>
+        </dd>
+        <!--<dt><span jhiTranslate="stockwayApp.article.code">Code</span></dt>
+        <dd>
+          <span>{{ article.code }}</span>
+        </dd>-->
+        <dt><span jhiTranslate="stockwayApp.article.nom">Nom</span></dt>
+        <dd>
+          <span>{{ article.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.article.description">Description</span></dt>
+        <dd>
+          <span>{{ article.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.article.prixAchat">Prix Achat</span></dt>
+        <dd>
+          <span>{{ article.prixAchat }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.article.qte">Qte</span></dt>
+        <dd>
+          <span>{{ article.qte }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.article.qteAlert">Qte Alert</span></dt>
+        <dd>
+          <span>{{ article.qteAlert }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.article.status">Status</span></dt>
+        <dd>
+          <span>{{ article.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.article.dateCreation">Date Creation</span></dt>
+        <dd>
+          <span>{{ article.dateCreation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.article.category">Category</span></dt>
+        <dd>
+          <div *ngIf="article.category">
+            <a [routerLink]="['/category', article.category.id, 'view']">{{ article.category.libelle }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.article.fournisseur">Fournisseur</span></dt>
+        <dd>
+          <div *ngIf="article.fournisseur">
+            <a [routerLink]="['/fournisseur', article.fournisseur.id, 'view']">{{ article.fournisseur.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/article', article.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+
+
+
+
+
+
+      <ngx-qrcode
+        [elementType]="elementType"
+        [errorCorrectionLevel]="correctionLevel"
+        [value]="article.code ?? ''"
+        cssClass="bshadow"></ngx-qrcode>
+
+      <button type="button" (click)="downloadQRCode()"   class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span  >Etiquette</span>
+      </button>
+
+    </div>
+  </div>
+  <div class="col-4">
+  </div>
+</div>

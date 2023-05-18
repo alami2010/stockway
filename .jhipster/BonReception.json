@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152058",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "bon_reception",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "informaton",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numFacture",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numBl",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "BonReception",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "bonReceptionItem",
+      "otherEntityRelationshipName": "bon",
+      "relationshipName": "bonReceptionItem",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "fournisseur",
+      "otherEntityRelationshipName": "bonReception",
+      "relationshipName": "fournisseur",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

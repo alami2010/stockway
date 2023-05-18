@@ -1,0 +1,26 @@
+{
+  "stockwayApp": {
+    "bonReceptionItem": {
+      "home": {
+        "title": "Bon Reception Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bon Reception Item",
+        "createOrEditLabel": "Create or edit a Bon Reception Item",
+        "notFound": "No Bon Reception Items found"
+      },
+      "created": "A new Bon Reception Item is created with identifier {{ param }}",
+      "updated": "A Bon Reception Item is updated with identifier {{ param }}",
+      "deleted": "A Bon Reception Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bon Reception Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Bon Reception Item"
+      },
+      "id": "Id",
+      "qte": "Qte",
+      "bon": "Bon",
+      "article": "Article"
+    }
+  }
+}

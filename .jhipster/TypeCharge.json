@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152105",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "type_charge",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "TypeCharge",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "charge",
+      "otherEntityRelationshipName": "type",
+      "relationshipName": "charge",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,25 @@
+{
+  "stockwayApp": {
+    "typeCharge": {
+      "home": {
+        "title": "TypeCharges",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Charge",
+        "createOrEditLabel": "Créer ou éditer un Type Charge",
+        "notFound": "Aucun Type Charge trouvé"
+      },
+      "created": "Un nouveau Type Charge a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Charge avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Charge avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Type Charge {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Charge"
+      },
+      "id": "Id",
+      "nom": "Nom",
+      "charge": "Charge"
+    }
+  }
+}

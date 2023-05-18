@@ -1,0 +1,57 @@
+{
+  "applications": "*",
+  "changelogDate": "20230514152057",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "fournisseur",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ville",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Fournisseur",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "bonReception",
+      "otherEntityRelationshipName": "fournisseur",
+      "relationshipName": "bonReception",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "article",
+      "otherEntityRelationshipName": "fournisseur",
+      "relationshipName": "article",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

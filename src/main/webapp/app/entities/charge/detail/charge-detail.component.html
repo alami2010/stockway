@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="charge">
+      <h2 data-cy="chargeDetailsHeading"><span jhiTranslate="stockwayApp.charge.detail.title">Charge</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockwayApp.charge.id">Id</span></dt>
+        <dd>
+          <span>{{ charge.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.charge.nom">Nom</span></dt>
+        <dd>
+          <span>{{ charge.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.charge.valeur">Valeur</span></dt>
+        <dd>
+          <span>{{ charge.valeur }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.charge.dateCreation">Date Creation</span></dt>
+        <dd>
+          <span>{{ charge.dateCreation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.charge.type">Type</span></dt>
+        <dd>
+          <div *ngIf="charge.type">
+            <a [routerLink]="['/type-charge', charge.type.id, 'view']">{{ charge.type.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/charge', charge.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

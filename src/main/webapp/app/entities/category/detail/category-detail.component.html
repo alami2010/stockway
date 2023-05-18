@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="category">
+      <h2 data-cy="categoryDetailsHeading"><span jhiTranslate="stockwayApp.category.detail.title">Category</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockwayApp.category.id">Id</span></dt>
+        <dd>
+          <span>{{ category.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.category.code">Code</span></dt>
+        <dd>
+          <span>{{ category.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="stockwayApp.category.libelle">Libelle</span></dt>
+        <dd>
+          <span>{{ category.libelle }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/category', category.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>
