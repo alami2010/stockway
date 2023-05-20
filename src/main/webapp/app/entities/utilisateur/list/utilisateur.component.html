@@ -36,16 +36,16 @@
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
           <th scope="col" jhiSortBy="id">
             <div class="d-flex">
-              <span jhiTranslate="stockwayApp.utilisateur.id">Id</span>
+              <span jhiTranslate="stockwayApp.utilisateur.code">Id</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="code">
+          <!-- <th scope="col" jhiSortBy="code">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.utilisateur.code">Code</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th>-->
           <th scope="col" jhiSortBy="nom">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.utilisateur.nom">Nom</span>
@@ -64,12 +64,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="status">
+          <!--       <th scope="col" jhiSortBy="status">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.utilisateur.status">Status</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th>-->
           <th scope="col" jhiSortBy="phone">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.utilisateur.phone">Phone</span>
@@ -88,18 +88,18 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="type">
+          <!--  <th scope="col" jhiSortBy="type">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.utilisateur.type">Type</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
-          <th scope="col" jhiSortBy="user.id">
+          </th>-->
+          <!--          <th scope="col" jhiSortBy="user.id">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.utilisateur.user">User</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th>-->
           <th scope="col"></th>
         </tr>
       </thead>
@@ -108,18 +108,24 @@
           <td>
             <a [routerLink]="['/utilisateur', utilisateur.id, 'view']">{{ utilisateur.id }}</a>
           </td>
+          <!--
           <td>{{ utilisateur.code }}</td>
+-->
           <td>{{ utilisateur.nom }}</td>
           <td>{{ utilisateur.prenom }}</td>
           <td>{{ utilisateur.dateCreation | formatMediumDate }}</td>
+          <!--
           <td>{{ utilisateur.status }}</td>
+-->
           <td>{{ utilisateur.phone }}</td>
           <td>{{ utilisateur.email }}</td>
           <td>{{ utilisateur.information }}</td>
+          <!--
           <td jhiTranslate="{{ 'stockwayApp.UserType.' + utilisateur.type }}">{{ utilisateur.type }}</td>
-          <td>
+-->
+          <!--   <td>
             {{ utilisateur.user?.id }}
-          </td>
+          </td>-->
           <td class="text-end">
             <div class="btn-group">
               <button
@@ -134,10 +140,10 @@
                   class="d-none d-md-inline"
                   jhiTranslate="entity.action.show"
                   [translateValues]="{ otherEntity: ('stockwayApp.utilisateur.paiement' | translate) }"
-                  >Show Paiement</span
+                  >Afficher les rémuniration</span
                 >
               </button>
-              <button
+              <!--              <button
                 type="submit"
                 [routerLink]="['/order']"
                 [queryParams]="{ 'filter[userId.in]': utilisateur.id }"
@@ -151,7 +157,7 @@
                   [translateValues]="{ otherEntity: ('stockwayApp.utilisateur.order' | translate) }"
                   >Show Order</span
                 >
-              </button>
+              </button>-->
               <button
                 type="submit"
                 [routerLink]="['/utilisateur', utilisateur.id, 'view']"

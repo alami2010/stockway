@@ -48,7 +48,7 @@
           </th>
           <th scope="col" jhiSortBy="dateCreation">
             <div class="d-flex">
-              <span jhiTranslate="stockwayApp.paiement.dateCreation">Date Creation</span>
+              <span jhiTranslate="stockwayApp.paiement.dateCreation">Date</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -70,7 +70,7 @@
           <td>{{ paiement.dateCreation | formatMediumDate }}</td>
           <td>
             <div *ngIf="paiement.user">
-              <a [routerLink]="['/utilisateur', paiement.user.id, 'view']">{{ paiement.user.id }}</a>
+              <a [routerLink]="['/utilisateur', paiement.user.id, 'view']">{{ paiement.user.id }} {{ paiement.user.nom }}</a>
             </div>
           </td>
           <td class="text-end">

@@ -9,7 +9,7 @@ import { DATE_FORMAT } from 'app/config/input.constants';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IArticle, NewArticle } from '../article.model';
-import {ICategory} from "../../category/category.model";
+import { ICategory } from '../../category/category.model';
 
 export type PartialUpdateArticle = Partial<IArticle> & Pick<IArticle, 'id'>;
 
@@ -125,7 +125,19 @@ export class ArticleService {
     });
   }
 
-  downloadFile(file: string) : Observable<any> {
-    return this.http.get(`${this.resourceUrl}/download-file/${file}`, {observe: 'response', responseType: 'blob'});
+  downloadFile(file: string): Observable<any> {
+    return this.http.get(`${this.resourceUrl}/download-file/${file}`, { observe: 'response', responseType: 'blob' });
+  }
+
+  upload(client: any, isCsv: boolean): Observable<string[]> {
+    return this.http.post<any>(`${this.resourceUrl}/upload-article?csv=${isCsv}`, client);
+  }
+
+  inventaire(client: any, isCsv: boolean): Observable<string[]> {
+    return this.http.post<any>(`${this.resourceUrl}/inventaire-article?csv=${isCsv}`, client);
+  }
+
+  downloadHistroy(category: string): Observable<any> {
+    return this.http.get(`${this.resourceUrl}/history/${category}`, { observe: 'response', responseType: 'blob' });
   }
 }

@@ -7,7 +7,6 @@ import com.jbd.stock.service.criteria.ArticleCriteria;
 import com.jbd.stock.service.dto.ArticleDTO;
 import com.jbd.stock.utils.Utils;
 import com.jbd.stock.web.rest.errors.BadRequestAlertException;
-
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
@@ -159,7 +159,7 @@ public class ArticleResource {
         @org.springdoc.api.annotations.ParameterObject Pageable pageable
     ) {
         log.debug("REST request to get Articles by criteria: {}", criteria);
-        Page<ArticleDTO> page = articleQueryService.findByCriteria(criteria, statusF , searchF , pageable);
+        Page<ArticleDTO> page = articleQueryService.findByCriteria(criteria, statusF, searchF, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -211,5 +211,41 @@ public class ArticleResource {
 
         File file = articleService.downloadFile(fileName);
         return Utils.getResourceResponseEntity(file);
+    }
+
+    @PostMapping("/articles/upload-article")
+    public ResponseEntity<List<String>> createUserClient(
+        @RequestParam(value = "csv", required = true) boolean isCsv,
+        @RequestParam(value = "uploadFile") MultipartFile uploadFile
+    ) throws Exception {
+        log.debug("REST request to upload file ");
+
+        List<String> rejectedLine = articleService.porocessUploadFile(uploadFile, isCsv);
+        return ResponseEntity
+            .created(new URI("/api/admin/users/" + "ok"))
+            .headers(HeaderUtil.createAlert(applicationName, "stockwayApp.article.import", "ok"))
+            .body(rejectedLine);
+    }
+
+    @GetMapping("/articles/history/{categoryId}")
+    public ResponseEntity<Resource> exportArticle(@PathVariable Long categoryId) throws Exception {
+        log.debug("REST request to exportArticle article : {}", categoryId);
+
+        File file = articleService.downloadHistory(categoryId);
+        return Utils.getResourceResponseEntity(file);
+    }
+
+    @PostMapping("/articles/inventaire-article")
+    public ResponseEntity<List<String>> uploadIventaire(
+        @RequestParam(value = "csv", required = true) boolean isCsv,
+        @RequestParam(value = "uploadFile") MultipartFile uploadFile
+    ) throws Exception {
+        log.debug("REST request to upload file ");
+
+        List<String> rejectedLine = articleService.porocessIventaire(uploadFile, isCsv);
+        return ResponseEntity
+            .created(new URI("/api/admin/users/" + "ok"))
+            .headers(HeaderUtil.createAlert(applicationName, "stockwayApp.article.import", "ok"))
+            .body(rejectedLine);
     }
 }

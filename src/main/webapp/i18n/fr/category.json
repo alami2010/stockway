@@ -2,7 +2,7 @@
   "stockwayApp": {
     "category": {
       "home": {
-        "title": "Categories",
+        "title": "Liste des categories",
         "refreshListLabel": "Actualiser la liste",
         "createLabel": "Créer un nouveau Category",
         "createOrEditLabel": "Créer ou éditer un Category",
@@ -15,9 +15,9 @@
         "question": "Êtes-vous certain de vouloir supprimer le Category {{ id }} ?"
       },
       "detail": {
-        "title": "Category"
+        "title": "Detail de categorie"
       },
-      "id": "Id",
+      "id": "Ixd",
       "code": "Code",
       "libelle": "Libelle",
       "article": "Article"

@@ -8,6 +8,7 @@ import com.jbd.stock.service.dto.UtilisateurDTO;
 import com.jbd.stock.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,6 +68,7 @@ public class UtilisateurResource {
         if (utilisateurDTO.getId() != null) {
             throw new BadRequestAlertException("A new utilisateur cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        utilisateurDTO.setDateCreation(LocalDate.now());
         UtilisateurDTO result = utilisateurService.save(utilisateurDTO);
         return ResponseEntity
             .created(new URI("/api/utilisateurs/" + result.getId()))

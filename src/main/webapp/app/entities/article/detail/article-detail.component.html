@@ -34,14 +34,14 @@
         <dd>
           <span>{{ article.qte }}</span>
         </dd>
-        <dt><span jhiTranslate="stockwayApp.article.qteAlert">Qte Alert</span></dt>
+        <!--        <dt><span jhiTranslate="stockwayApp.article.qteAlert">Qte Alert</span></dt>
         <dd>
           <span>{{ article.qteAlert }}</span>
         </dd>
         <dt><span jhiTranslate="stockwayApp.article.status">Status</span></dt>
         <dd>
           <span>{{ article.status }}</span>
-        </dd>
+        </dd>-->
         <dt><span jhiTranslate="stockwayApp.article.dateCreation">Date Creation</span></dt>
         <dd>
           <span>{{ article.dateCreation | formatMediumDate }}</span>
@@ -68,23 +68,17 @@
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
       </button>
 
-
-
-
-
-
       <ngx-qrcode
         [elementType]="elementType"
         [errorCorrectionLevel]="correctionLevel"
-        [value]="article.code ?? ''"
-        cssClass="bshadow"></ngx-qrcode>
+        [value]="article.id.toString()"
+        cssClass="bshadow"
+      ></ngx-qrcode>
 
-      <button type="button" (click)="downloadQRCode()"   class="btn btn-primary">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span  >Etiquette</span>
+      <button type="button" (click)="downloadQRCode()" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Etiquette</span>
       </button>
-
     </div>
   </div>
-  <div class="col-4">
-  </div>
+  <div class="col-4"></div>
 </div>

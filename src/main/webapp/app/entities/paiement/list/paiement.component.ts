@@ -21,7 +21,7 @@ export class PaiementComponent implements OnInit {
   isLoading = false;
 
   predicate = 'id';
-  ascending = true;
+  ascending = false;
   filters: IFilterOptions = new FilterOptions();
 
   itemsPerPage = ITEMS_PER_PAGE;
@@ -87,7 +87,7 @@ export class PaiementComponent implements OnInit {
     this.page = +(page ?? 1);
     const sort = (params.get(SORT) ?? data[DEFAULT_SORT_DATA]).split(',');
     this.predicate = sort[0];
-    this.ascending = sort[1] === ASC;
+    this.ascending = false;
     this.filters.initializeFromParams(params);
   }
 

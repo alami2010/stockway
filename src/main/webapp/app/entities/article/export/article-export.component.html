@@ -1,3 +1,22 @@
 <div class="d-flex justify-content-center">
-  <div class="col-8"></div>
+  <div class="col-8">
+    <h3>Exportation des articles</h3>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleSelect1" class="col-form-label">Categorie</label>
+          <select [(ngModel)]="currentStatusFilter" class="form-select" id="exampleSelect1">
+            <option value="0">Toutes les catégories</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.libelle }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label class="col-form-label" for="inputDefault">&nbsp; </label> <label class="col-form-label" for="inputDefault">&nbsp; </label
+        ><br />
+        <button type="button" (click)="export()" class="btn btn-outline-primary">Exporter</button>
+      </div>
+    </div>
+  </div>
 </div>

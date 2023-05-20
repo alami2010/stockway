@@ -7,6 +7,7 @@ import com.jbd.stock.service.dto.ArticleDTO;
 import com.jbd.stock.service.mapper.ArticleMapper;
 import java.util.List;
 import javax.persistence.criteria.JoinType;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -63,20 +64,26 @@ public class ArticleQueryService extends QueryService<Article> {
         log.debug("find by criteria : {}, page: {}", criteria, page);
         Specification<Article> specification = createSpecification(criteria);
 
-        if(statusF != null && statusF != 0){
-            specification =  specification.and(hasCategory(statusF));
+        if (statusF != null && statusF != 0) {
+            specification = specification.and(hasCategory(statusF));
         }
+        // todo search for ids
+        if (search != null && !search.isEmpty()) {
+            specification = specification.or(hasWord("nom", search.toLowerCase()));
 
-        if(search != null && !search.isEmpty()){
-            specification = specification
-                .or(hasWord("nom", search.toLowerCase()))
-                .or(hasWord("code", search.toLowerCase()));
+            if (NumberUtils.isCreatable(search.trim())) {
+                specification = specification.or(hadId(Long.valueOf(search)));
+            }
         }
         return articleRepository.findAll(specification, page).map(articleMapper::toDto);
     }
 
     public static Specification<Article> hasCategory(Long isCategory) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.in(root.get("category").get("id")).value(isCategory);
+        return (root, query, criteriaBuilder) -> criteriaBuilder.in(root.get("id").get("id")).value(isCategory);
+    }
+
+    public static Specification<Article> hadId(Long id) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.in(root.get("id")).value(id);
     }
 
     private Specification<Article> hasWord(String column, String search) {

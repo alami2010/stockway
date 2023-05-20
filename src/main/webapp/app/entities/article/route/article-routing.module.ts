@@ -7,8 +7,9 @@ import { ArticleDetailComponent } from '../detail/article-detail.component';
 import { ArticleUpdateComponent } from '../update/article-update.component';
 import { ArticleRoutingResolveService } from './article-routing-resolve.service';
 import { ASC } from 'app/config/navigation.constants';
-import {ArticleExportComponent} from "../export/article-export.component";
-import {ArticleImportComponent} from "../import/article-import.component";
+import { ArticleExportComponent } from '../export/article-export.component';
+import { ArticleImportComponent } from '../import/article-import.component';
+import { ArticleInventaireComponent } from '../inventaire/article-inventaire.component';
 
 const articleRoute: Routes = [
   {
@@ -22,6 +23,12 @@ const articleRoute: Routes = [
   {
     path: 'import',
     component: ArticleImportComponent,
+
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'inventaire',
+    component: ArticleInventaireComponent,
 
     canActivate: [UserRouteAccessService],
   },

@@ -3,13 +3,6 @@
     <span jhiTranslate="stockwayApp.article.home.title">Articles</span>
 
     <div class="d-flex justify-content-end">
-
-
-      <button class="btn btn-success me-2" (click)="load()" [disabled]="isLoading">
-        <fa-icon [spin]="isLoading"></fa-icon>
-        <span  >Charger un fichier</span>
-      </button>
-
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="stockwayApp.article.home.refreshListLabel">Actualiser la liste</span>
@@ -27,35 +20,30 @@
     </div>
   </h2>
 
-
   <div class="row">
-
-
     <div class="col-md-2">
       <div class="form-group">
         <label class="col-form-label" for="inputDefault">Recherche</label>
-        <input [(ngModel)]="currentSearchFilter" type="text" class="form-control" placeholder="Recherche" id="inputDefault">
+        <input [(ngModel)]="currentSearchFilter" type="text" class="form-control" placeholder="Recherche" id="inputDefault" />
       </div>
     </div>
 
     <div class="col-md-2">
       <div class="form-group">
         <label for="exampleSelect1" class="col-form-label">Categorie</label>
-        <select  [(ngModel)]="currentStatusFilter" class="form-select" id="exampleSelect1">
-          <option   value="" > </option>
-          <option  *ngFor="let category of categories"  [value]="category.id" >{{category.libelle}}</option>
+        <select [(ngModel)]="currentStatusFilter" class="form-select" id="exampleSelect1">
+          <option value=""></option>
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.libelle }}</option>
         </select>
       </div>
     </div>
     <div class="col-md-3">
-      <label class="col-form-label" for="inputDefault">&nbsp; </label> <label class="col-form-label" for="inputDefault">&nbsp; </label><br>
+      <label class="col-form-label" for="inputDefault">&nbsp; </label> <label class="col-form-label" for="inputDefault">&nbsp; </label
+      ><br />
       <button type="button" (click)="search()" class="btn btn-outline-primary">Chercher</button>
 
       <button type="button" (click)="reset()" class="btn btn-outline-primary">Reset</button>
     </div>
-
-
-
   </div>
 
   <jhi-alert-error></jhi-alert-error>
@@ -63,13 +51,6 @@
   <jhi-alert></jhi-alert>
 
   <jhi-filter [filters]="filters"></jhi-filter>
-
-
-
-
-
-
-
 
   <div class="alert alert-warning" id="no-result" *ngIf="articles?.length === 0">
     <span jhiTranslate="stockwayApp.article.home.notFound">Aucun Article trouvé</span>
@@ -85,7 +66,7 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-         <!-- <th scope="col" jhiSortBy="code">
+          <!-- <th scope="col" jhiSortBy="code">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.article.code">Code</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -111,7 +92,6 @@
             </div>
           </th>
 
-
           <th scope="col" jhiSortBy="dateCreation">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.article.dateCreation">Date</span>
@@ -133,7 +113,7 @@
           <td>
             <a [routerLink]="['/article', article.id, 'view']">{{ article.id }}</a>
           </td>
-         <!-- <td>{{ article.code }}</td>-->
+          <!-- <td>{{ article.code }}</td>-->
           <td>{{ article.nom }}</td>
 
           <td>{{ article.prixAchat }}</td>
@@ -148,7 +128,6 @@
 
           <td class="text-end">
             <div class="btn-group">
-
               <button
                 type="submit"
                 [routerLink]="['/article', article.id, 'view']"

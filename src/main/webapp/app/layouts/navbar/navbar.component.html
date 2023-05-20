@@ -1,8 +1,13 @@
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
-      <span class="logo-img"></span>
-      <span class="navbar-title">Maroquinereie El Mansour</span>
+      <span class="logo-img"
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span>
+      <!--
+      <span class="navbar-title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+-->
       <!-- <span class="navbar-version">{{ version }}</span>-->
     </a>
     <a
@@ -82,7 +87,7 @@
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="artcile-menu" data-cy="entity">
             <span>
               <fa-icon icon="th-list"></fa-icon>
-              <span>Articles</span>
+              <span>Stock</span>
             </span>
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
@@ -123,6 +128,20 @@
                 <span>Import Article</span>
               </a>
             </li>
+
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="article/inventaire"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span>Inventaire</span>
+              </a>
+            </li>
+
             <li>
               <a
                 class="dropdown-item"
@@ -136,12 +155,25 @@
               </a>
             </li>
 
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="fournisseur"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.fournisseur">Fournisseur</span>
+              </a>
+            </li>
+
             <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
           </ul>
         </li>
 
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-        <li
+        <!--  <li
           *ngSwitchCase="true"
           ngbDropdown
           class="nav-item dropdown pointer"
@@ -168,18 +200,7 @@
                 <span jhiTranslate="global.menu.entities.category">Category</span>
               </a>
             </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="fournisseur"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span jhiTranslate="global.menu.entities.fournisseur">Fournisseur</span>
-              </a>
-            </li>
+
             <li>
               <a
                 class="dropdown-item"
@@ -265,7 +286,7 @@
                 <span jhiTranslate="global.menu.entities.typeCharge">Type Charge</span>
               </a>
             </li>
-            <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+            &lt;!&ndash; jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here &ndash;&gt;
           </ul>
         </li>
         <li
@@ -319,9 +340,9 @@
                 <span jhiTranslate="global.menu.admin.apidocs">API</span>
               </a>
             </li>
-            <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+            &lt;!&ndash; jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here &ndash;&gt;
           </ul>
-        </li>
+        </li>-->
         <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
             <span>

@@ -124,7 +124,10 @@ docker-compose -f src/main/docker/jhipster-control-center.yml up
 To build the final jar and optimize the stockway application for production, run:
 
 ```
-./mvnw -Pprod clean verify
+./mvnw -Pprod clean verify -DskipTests
+java -jar stockway-0.0.1-SNAPSHOT.jar  --server.port=8083 & disown
+sudo fuser -n tcp -k 8083
+
 ```
 
 This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.

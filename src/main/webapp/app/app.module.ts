@@ -27,6 +27,7 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-', caseSensitive: true }),
     TranslationModule,
     NgxQRCodeModule,
+    NgxLoadingModule.forRoot({}),
   ],
   providers: [
     Title,

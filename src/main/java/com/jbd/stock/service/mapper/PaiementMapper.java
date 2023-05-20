@@ -17,5 +17,6 @@ public interface PaiementMapper extends EntityMapper<PaiementDTO, Paiement> {
     @Named("utilisateurId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "nom", source = "nom")
     UtilisateurDTO toDtoUtilisateurId(Utilisateur utilisateur);
 }

@@ -110,7 +110,7 @@
       "open": "Ouvrir",
       "save": "Sauvegarder",
       "view": "Voir",
-      "show": "Show {{otherEntity}}"
+      "show": "{{otherEntity}}"
     },
     "detail": {
       "field": "Champs",
@@ -155,5 +155,5 @@
       "not.image": "Le fichier doit être une image et non du type \"{{ fileType }}\""
     }
   },
-  "footer": "Ceci est votre pied de page"
+  "footer": "© 2023 Copyright By Maroquinerie El mansour ."
 }

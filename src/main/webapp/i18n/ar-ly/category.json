@@ -15,9 +15,9 @@
         "question": "Are you sure you want to delete Category {{ id }}?"
       },
       "detail": {
-        "title": "Category"
+        "title": "Liste des categories"
       },
-      "id": "Id",
+      "id": "Code ",
       "code": "Code",
       "libelle": "Libelle",
       "article": "Article"

@@ -17,7 +17,7 @@
       "detail": {
         "title": "Utilisateur"
       },
-      "id": "Id",
+      "id": "Code",
       "code": "Code",
       "nom": "Nom",
       "prenom": "Prenom",
@@ -28,7 +28,7 @@
       "information": "Information",
       "type": "Type",
       "user": "User",
-      "paiement": "Paiement",
+      "paiement": "Rémunrations",
       "order": "Order",
       "roles": "Roles"
     }

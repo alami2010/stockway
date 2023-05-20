@@ -36,16 +36,16 @@
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
           <th scope="col" jhiSortBy="id">
             <div class="d-flex">
-              <span jhiTranslate="stockwayApp.category.id">Id</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="code">
-            <div class="d-flex">
               <span jhiTranslate="stockwayApp.category.code">Code</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <!--<th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.category.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>-->
           <th scope="col" jhiSortBy="libelle">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.category.libelle">Libelle</span>
@@ -60,11 +60,11 @@
           <td>
             <a [routerLink]="['/category', category.id, 'view']">{{ category.id }}</a>
           </td>
-          <td>{{ category.code }}</td>
+          <!-- <td>{{ category.code }}</td>-->
           <td>{{ category.libelle }}</td>
           <td class="text-end">
             <div class="btn-group">
-                <button
+              <button
                 type="submit"
                 [routerLink]="['/category', category.id, 'view']"
                 class="btn btn-info btn-sm"

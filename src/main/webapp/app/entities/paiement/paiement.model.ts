@@ -5,7 +5,7 @@ export interface IPaiement {
   id: number;
   remunuration?: number | null;
   dateCreation?: dayjs.Dayjs | null;
-  user?: Pick<IUtilisateur, 'id'> | null;
+  user?: IUtilisateur | null;
 }
 
 export type NewPaiement = Omit<IPaiement, 'id'> & { id: null };

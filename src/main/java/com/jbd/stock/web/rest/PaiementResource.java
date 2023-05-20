@@ -8,6 +8,7 @@ import com.jbd.stock.service.dto.PaiementDTO;
 import com.jbd.stock.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,6 +68,7 @@ public class PaiementResource {
         if (paiementDTO.getId() != null) {
             throw new BadRequestAlertException("A new paiement cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        paiementDTO.setDateCreation(LocalDate.now());
         PaiementDTO result = paiementService.save(paiementDTO);
         return ResponseEntity
             .created(new URI("/api/paiements/" + result.getId()))

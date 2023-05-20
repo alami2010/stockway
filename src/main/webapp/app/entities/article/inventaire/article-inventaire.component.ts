@@ -6,9 +6,9 @@ import { ArticleService } from '../service/article.service';
 
 @Component({
   selector: 'jhi-article-detail',
-  templateUrl: './article-import.component.html',
+  templateUrl: './article-iventaire.component.html',
 })
-export class ArticleImportComponent implements OnInit {
+export class ArticleInventaireComponent implements OnInit {
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
 
@@ -23,12 +23,8 @@ export class ArticleImportComponent implements OnInit {
     window.history.back();
   }
 
-  downloadListCategories() {
-    this.downloadFile('CATEGORY_LIST', '.csv');
-  }
-
   downloadColisUploadExcel() {
-    this.downloadFile('ARTICLE_UPLOAD', '.csv');
+    this.downloadFile('INVETAIRE_UPLOAD', '.csv');
   }
 
   private downloadFile(file: string, extension: string) {
@@ -62,7 +58,7 @@ export class ArticleImportComponent implements OnInit {
   upload(formData: FormData, isCsv: boolean) {
     this.loading = true;
 
-    this.articleService.upload(formData, isCsv).subscribe(
+    this.articleService.inventaire(formData, isCsv).subscribe(
       value => {
         this.loading = false;
         this.lineRejected = value;

@@ -9,6 +9,7 @@
         "notFound": "Aucun Article trouvé"
       },
       "created": "Un nouveau Article a été créé avec l'identifiant {{ param }}",
+      "import": "L'import des article à été bien effectué",
       "updated": "Le Article avec l'identifiant {{ param }} a été mis à jour",
       "deleted": "Le Article avec l'identifiant {{ param }} a été supprimé",
       "delete": {

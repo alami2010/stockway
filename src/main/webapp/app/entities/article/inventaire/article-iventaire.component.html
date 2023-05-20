@@ -1,15 +1,11 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    <h3>Importation des nouveaux articles</h3>
-
+    <h3>Inventaire</h3>
     <div class="upload-image" style="padding: 24px">
       <a (click)="downloadColisUploadExcel()"
         >Télecherger un exemple de fichier csv pour uploader <button type="button" class="btn btn-light">Télecherger</button> </a
       ><br />
-      <a (click)="downloadListCategories()"
-        >Télecherger La liste Categories
-        <button type="button" class="btn btn-light">Télecherger</button>
-      </a>
+
       <br /><br />
       <span style="font-size: 18px"> Scannez votre fichier csv <span *ngIf="uploadFile">done</span> </span> <br />
       <input (change)="selectFile1($event)" type="file" class="imgInp" />

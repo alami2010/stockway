@@ -1,14 +1,14 @@
 package com.jbd.stock.service;
 
 import com.jbd.stock.service.dto.ArticleDTO;
-
+import com.jbd.stock.web.rest.EXPORT_FILE_TYPE;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
-
-import com.jbd.stock.web.rest.EXPORT_FILE_TYPE;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Service Interface for managing {@link com.jbd.stock.domain.Article}.
@@ -62,4 +62,10 @@ public interface ArticleService {
     void delete(Long id);
 
     File downloadFile(EXPORT_FILE_TYPE fileName) throws Exception;
+
+    List<String> porocessUploadFile(MultipartFile uploadFile, boolean isCsv) throws Exception;
+
+    File downloadHistory(Long categoryId) throws IOException;
+
+    List<String> porocessIventaire(MultipartFile uploadFile, boolean isCsv) throws IOException;
 }

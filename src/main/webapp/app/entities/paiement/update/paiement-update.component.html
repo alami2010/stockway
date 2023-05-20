@@ -25,7 +25,7 @@
           />
         </div>
 
-        <div class="row mb-3">
+        <!--  <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.paiement.dateCreation" for="field_dateCreation">Date Creation</label>
           <div class="input-group">
             <input
@@ -42,14 +42,14 @@
               <fa-icon icon="calendar-alt"></fa-icon>
             </button>
           </div>
-        </div>
+        </div>-->
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.paiement.user" for="field_user">User</label>
           <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUtilisateur">
             <option [ngValue]="null"></option>
             <option [ngValue]="utilisateurOption" *ngFor="let utilisateurOption of utilisateursSharedCollection">
-              {{ utilisateurOption.id }}
+              {{ utilisateurOption.nom }}
             </option>
           </select>
         </div>

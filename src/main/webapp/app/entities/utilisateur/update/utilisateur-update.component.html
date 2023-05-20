@@ -17,10 +17,10 @@
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
-        <div class="row mb-3">
+        <!--        <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.utilisateur.code" for="field_code">Code</label>
           <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
-        </div>
+        </div>-->
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.utilisateur.nom" for="field_nom">Nom</label>
@@ -32,7 +32,7 @@
           <input type="text" class="form-control" name="prenom" id="field_prenom" data-cy="prenom" formControlName="prenom" />
         </div>
 
-        <div class="row mb-3">
+        <!--      <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.utilisateur.dateCreation" for="field_dateCreation">Date Creation</label>
           <div class="input-group">
             <input
@@ -55,7 +55,7 @@
           <label class="form-label" jhiTranslate="stockwayApp.utilisateur.status" for="field_status">Status</label>
           <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
         </div>
-
+-->
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.utilisateur.phone" for="field_phone">Phone</label>
           <input type="text" class="form-control" name="phone" id="field_phone" data-cy="phone" formControlName="phone" />
@@ -78,7 +78,7 @@
           />
         </div>
 
-        <div class="row mb-3">
+        <!--<div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.utilisateur.type" for="field_type">Type</label>
           <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
             <option [ngValue]="null">{{ 'stockwayApp.UserType.null' | translate }}</option>
@@ -107,7 +107,7 @@
           >
             <option [ngValue]="roleOption" *ngFor="let roleOption of rolesSharedCollection">{{ roleOption.id }}</option>
           </select>
-        </div>
+        </div>-->
       </div>
 
       <div>

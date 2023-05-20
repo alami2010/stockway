@@ -13,8 +13,6 @@
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
-
-
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.article.nom" for="field_nom">Nom</label>
           <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
@@ -42,12 +40,12 @@
           <input type="number" class="form-control" name="qte" id="field_qte" data-cy="qte" formControlName="qte" />
         </div>
 
-        <div class="row mb-3">
+        <!--        <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.article.qteAlert" for="field_qteAlert">Qte Alert</label>
           <input type="number" class="form-control" name="qteAlert" id="field_qteAlert" data-cy="qteAlert" formControlName="qteAlert" />
-        </div>
+        </div>-->
 
-      <!--  <div class="row mb-3">
+        <!--  <div class="row mb-3">
           <label class="form-label" jhiTranslate="stockwayApp.article.status" for="field_status">Status</label>
           <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
         </div>-->
@@ -82,7 +80,9 @@
             [compareWith]="compareCategory"
           >
             <option [ngValue]="null"></option>
-            <option [ngValue]="categoryOption" *ngFor="let categoryOption of categoriesSharedCollection">{{ categoryOption.libelle }}</option>
+            <option [ngValue]="categoryOption" *ngFor="let categoryOption of categoriesSharedCollection">
+              {{ categoryOption.libelle }}
+            </option>
           </select>
         </div>
 
