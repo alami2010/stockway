@@ -1,8 +1,60 @@
 <div class="row">
   <div class="col-md-12">
-    <h1 class="display-4"><span jhiTranslate="home.title">Maroquinerie El Mansour !</span></h1>
+    <div class="row">
+      <div class="col-lg-8">
+        <h2 class="display-8"><span jhiTranslate="home.title">Maroquinerie El Mansour !</span></h2>
+      </div>
+      <div class="col-lg-4">
+        <span class="logo-app2"></span>
+      </div>
+    </div>
 
-    <span class="logo-app2"></span>
+    <div class="container" *ngIf="statistic.categories.length > 0">
+      <div class="row">
+        <div class="col-lg-12">
+          <h4><i class="fa fa-tachometer" aria-hidden="true"></i> Nombre d'article par catégorie</h4>
+          <hr />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2" *ngFor="let category of statistic.categories">
+          <a class="text-decoration-none" href="#">
+            <div class="card p-3 shadow bg-purple text-center border-0">
+              <div class="card-body">
+                <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>{{ category.value }}
+                <hr />
+                <p class="card-title lead">{{ category.count }}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 pt-4">
+          <h4><i class="fa fa-tachometer" aria-hidden="true"></i> Alerte quantité</h4>
+          <hr />
+        </div>
+      </div>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Catégorie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-active" *ngFor="let article of statistic.articleOutOfStock">
+            <th scope="row">{{ article.code }}</th>
+            <td>{{ article.nom }}</td>
+            <td>{{ article.category?.libelle }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <!--    <div [ngSwitch]="account !== null">
       <div class="alert alert-success" *ngSwitchCase="true">
         <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message" [translateValues]="{ username: account.login }"

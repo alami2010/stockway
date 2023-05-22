@@ -4,16 +4,17 @@
       "home": {
         "title": "Articles",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Article",
-        "createOrEditLabel": "Créer ou éditer un Article",
-        "notFound": "Aucun Article trouvé"
+        "createLabel": "Créer un nouveau article",
+        "createOrEditLabel": "Créer ou éditer un article",
+        "notFound": "Aucun article trouvé"
       },
-      "created": "Un nouveau Article a été créé avec l'identifiant {{ param }}",
-      "import": "L'import des article à été bien effectué",
-      "updated": "Le Article avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Article avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau article a été créé avec l'identifiant {{ param }}",
+      "import": "L'import des articles à été bien effectué",
+      "error": "Voilà les articles qui ne sont pas acceptés",
+      "updated": "L'article avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "L'article avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Article {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer l'article {{ id }} ?"
       },
       "detail": {
         "title": "Article"
@@ -23,14 +24,19 @@
       "nom": "Nom",
       "description": "Description",
       "prixAchat": "Prix",
-      "qte": "Qte",
-      "qteAlert": "Qte Alert",
+      "qte": "Quantité",
+      "qteAlert": "Quantité d'alert",
       "status": "Status",
       "dateCreation": "Date",
-      "orderItem": "Order Item",
-      "bonReceptionItem": "Bon Reception Item",
-      "category": "Category",
-      "fournisseur": "Fournisseur"
+      "orderItem": "Commande Item",
+      "bonReceptionItem": "Bon de réception Item",
+      "category": "Catégorie",
+      "tout_category": "Toute les catégorie",
+      "recherche": "Recherche",
+      "chercher": "Chercher",
+      "reset": "Eéinitialiser",
+      "fournisseur": "Fournisseur",
+      "export": "Exportation des articles"
     }
   }
 }

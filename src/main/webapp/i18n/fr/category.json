@@ -2,24 +2,24 @@
   "stockwayApp": {
     "category": {
       "home": {
-        "title": "Liste des categories",
+        "title": "Liste des catégories",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Category",
-        "createOrEditLabel": "Créer ou éditer un Category",
-        "notFound": "Aucun Category trouvé"
+        "createLabel": "Créer une nouvelle catégorie",
+        "createOrEditLabel": "Créer ou éditer une catégorie",
+        "notFound": "Aucune catégorie trouvée"
       },
-      "created": "Un nouveau Category a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Category avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Category avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle catégorie a été créée avec l'identifiant {{ param }}",
+      "updated": "La catégorie avec l'identifiant {{ param }} a été mise à jour",
+      "deleted": "La catégorie avec l'identifiant {{ param }} a été supprimée",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Category {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer la catégorie {{ id }} ?"
       },
       "detail": {
-        "title": "Detail de categorie"
+        "title": "Détail de catégorie"
       },
       "id": "Ixd",
       "code": "Code",
-      "libelle": "Libelle",
+      "libelle": "Libellé",
       "article": "Article"
     }
   }

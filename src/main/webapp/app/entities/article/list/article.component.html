@@ -23,14 +23,14 @@
   <div class="row">
     <div class="col-md-2">
       <div class="form-group">
-        <label class="col-form-label" for="inputDefault">Recherche</label>
+        <label class="col-form-label" for="inputDefault"><span jhiTranslate="stockwayApp.article.recherche">Recherche</span></label>
         <input [(ngModel)]="currentSearchFilter" type="text" class="form-control" placeholder="Recherche" id="inputDefault" />
       </div>
     </div>
 
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleSelect1" class="col-form-label">Categorie</label>
+        <label for="exampleSelect1" class="col-form-label"><span jhiTranslate="stockwayApp.article.category">Category</span></label>
         <select [(ngModel)]="currentStatusFilter" class="form-select" id="exampleSelect1">
           <option value=""></option>
           <option *ngFor="let category of categories" [value]="category.id">{{ category.libelle }}</option>
@@ -60,7 +60,7 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <th scope="col" jhiSortBy="code">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.article.id">Id</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -92,6 +92,13 @@
             </div>
           </th>
 
+          <th scope="col" jhiSortBy="qte">
+            <div class="d-flex">
+              <span jhiTranslate="stockwayApp.article.qteAlert">Qte</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+
           <th scope="col" jhiSortBy="dateCreation">
             <div class="d-flex">
               <span jhiTranslate="stockwayApp.article.dateCreation">Date</span>
@@ -111,13 +118,14 @@
       <tbody>
         <tr *ngFor="let article of articles; trackBy: trackId" data-cy="entityTable">
           <td>
-            <a [routerLink]="['/article', article.id, 'view']">{{ article.id }}</a>
+            <a [routerLink]="['/article', article.id, 'view']">{{ article.code }}</a>
           </td>
           <!-- <td>{{ article.code }}</td>-->
           <td>{{ article.nom }}</td>
 
           <td>{{ article.prixAchat }}</td>
           <td>{{ article.qte }}</td>
+          <td>{{ article.qteAlert }}</td>
 
           <td>{{ article.dateCreation | formatMediumDate }}</td>
           <td>

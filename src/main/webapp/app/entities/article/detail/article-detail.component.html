@@ -12,7 +12,7 @@
       <dl class="row-md jh-entity-details">
         <dt><span jhiTranslate="stockwayApp.article.id">Code</span></dt>
         <dd>
-          <span>{{ article.id }}</span>
+          <span>{{ article.code }}</span>
         </dd>
         <!--<dt><span jhiTranslate="stockwayApp.article.code">Code</span></dt>
         <dd>
@@ -34,14 +34,15 @@
         <dd>
           <span>{{ article.qte }}</span>
         </dd>
-        <!--        <dt><span jhiTranslate="stockwayApp.article.qteAlert">Qte Alert</span></dt>
+        <dt><span jhiTranslate="stockwayApp.article.qteAlert">Qte Alert</span></dt>
         <dd>
           <span>{{ article.qteAlert }}</span>
         </dd>
-        <dt><span jhiTranslate="stockwayApp.article.status">Status</span></dt>
-        <dd>
-          <span>{{ article.status }}</span>
-        </dd>-->
+        <!--
+       <dt><span jhiTranslate="stockwayApp.article.status">Status</span></dt>
+       <dd>
+         <span>{{ article.status }}</span>
+       </dd>-->
         <dt><span jhiTranslate="stockwayApp.article.dateCreation">Date Creation</span></dt>
         <dd>
           <span>{{ article.dateCreation | formatMediumDate }}</span>
@@ -52,12 +53,12 @@
             <a [routerLink]="['/category', article.category.id, 'view']">{{ article.category.libelle }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="stockwayApp.article.fournisseur">Fournisseur</span></dt>
+        <!-- <dt><span jhiTranslate="stockwayApp.article.fournisseur">Fournisseur</span></dt>
         <dd>
           <div *ngIf="article.fournisseur">
             <a [routerLink]="['/fournisseur', article.fournisseur.id, 'view']">{{ article.fournisseur.nom }}</a>
           </div>
-        </dd>
+        </dd>-->
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

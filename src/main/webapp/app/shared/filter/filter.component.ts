@@ -15,4 +15,9 @@ export class FilterComponent {
   clearFilter(filterName: string, value: string): void {
     this.filters.removeFilter(filterName, value);
   }
+
+  getNameFome(text: string) {
+    if (text === 'userId.in') return 'Utilisateur Code ';
+    return text;
+  }
 }

@@ -10,6 +10,7 @@ import { ApplicationConfigService } from 'app/core/config/application-config.ser
 import { createRequestOption } from 'app/core/request/request-util';
 import { IArticle, NewArticle } from '../article.model';
 import { ICategory } from '../../category/category.model';
+import { IDashboard } from '../../../home/dashboard.model';
 
 export type PartialUpdateArticle = Partial<IArticle> & Pick<IArticle, 'id'>;
 
@@ -139,5 +140,9 @@ export class ArticleService {
 
   downloadHistroy(category: string): Observable<any> {
     return this.http.get(`${this.resourceUrl}/history/${category}`, { observe: 'response', responseType: 'blob' });
+  }
+
+  findStatistic(): Observable<IDashboard> {
+    return this.http.get<IDashboard>(`${this.resourceUrl}-dashboard`, { observe: 'response' }).pipe(map(res => res.body as IDashboard));
   }
 }

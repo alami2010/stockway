@@ -133,9 +133,9 @@
       "patternLogin": "Ce champ ne peut contenir que des lettres, des chiffres ou des adresses e-mail."
     },
     "filters": {
-      "set": "Following filters are set",
-      "clear": "Clear filter",
-      "clearAll": "Clear all filters"
+      "set": "Les filtres suivants sont définis",
+      "clear": "Effacer le filtre",
+      "clearAll": "Effacer tous les filtres"
     }
   },
   "error": {

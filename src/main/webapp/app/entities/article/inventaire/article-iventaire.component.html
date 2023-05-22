@@ -15,7 +15,7 @@
       <br /><br />
 
       <div *ngIf="lineRejected.length > 0">
-        <span>Les articles qui sont pas accepté</span>
+        <span jhiTranslate="stockwayApp.article.error"> </span>
         <ul>
           <li *ngFor="let elem of lineRejected">{{ elem }}</li>
         </ul>

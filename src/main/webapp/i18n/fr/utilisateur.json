@@ -4,15 +4,15 @@
       "home": {
         "title": "Utilisateurs",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Utilisateur",
-        "createOrEditLabel": "Créer ou éditer un Utilisateur",
-        "notFound": "Aucun Utilisateur trouvé"
+        "createLabel": "Créer un nouveau utilisateur",
+        "createOrEditLabel": "Créer ou éditer un utilisateur",
+        "notFound": "Aucun utilisateur trouvé"
       },
-      "created": "Un nouveau Utilisateur a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Utilisateur avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Utilisateur avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau utilisateur a été créé avec l'identifiant {{ param }}",
+      "updated": "L'utilisateur avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "L'utilisateur avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Utilisateur {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer l'utilisateur {{ id }} ?"
       },
       "detail": {
         "title": "Utilisateur"
@@ -20,17 +20,17 @@
       "id": "Code",
       "code": "Code",
       "nom": "Nom",
-      "prenom": "Prenom",
-      "dateCreation": "Date Creation",
+      "prenom": "Prénom",
+      "dateCreation": "Date de création",
       "status": "Status",
-      "phone": "Phone",
+      "phone": "Téléphone",
       "email": "Email",
       "information": "Information",
       "type": "Type",
-      "user": "User",
-      "paiement": "Rémunrations",
-      "order": "Order",
-      "roles": "Roles"
+      "user": "Utilisateur",
+      "paiement": "Rémunérations",
+      "order": "Commande",
+      "roles": "Rôles"
     }
   }
 }

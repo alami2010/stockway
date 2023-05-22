@@ -2,9 +2,9 @@
   "stockwayApp": {
     "PaymentType": {
       "null": "",
-      "CHEQUE": "CHEQUE",
-      "CARD": "CARD",
-      "CACHE": "CACHE"
+      "CHEQUE": "Chèque",
+      "CARD": "Cartes bancaires",
+      "CACHE": "Cache"
     }
   }
 }

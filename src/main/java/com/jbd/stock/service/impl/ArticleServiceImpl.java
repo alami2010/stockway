@@ -6,6 +6,8 @@ import com.jbd.stock.repository.ArticleRepository;
 import com.jbd.stock.repository.CategoryRepository;
 import com.jbd.stock.service.ArticleService;
 import com.jbd.stock.service.dto.ArticleDTO;
+import com.jbd.stock.service.dto.Dashboard;
+import com.jbd.stock.service.dto.StatisticsCount;
 import com.jbd.stock.service.mapper.ArticleMapper;
 import com.jbd.stock.service.mapper.CategoryMapper;
 import com.jbd.stock.utils.Utils;
@@ -57,6 +59,8 @@ public class ArticleServiceImpl implements ArticleService {
         Article article = articleMapper.toEntity(articleDTO);
         article.setDateCreation(LocalDate.now());
         article = articleRepository.save(article);
+        article.setCode(Utils.getCode(article.getId(), article.getCategory()));
+
         return articleMapper.toDto(article);
     }
 
@@ -136,6 +140,26 @@ public class ArticleServiceImpl implements ArticleService {
         return isCsv ? inventaireCsv(uploadFile) : inventaireExcel(uploadFile);
     }
 
+    @Override
+    public Dashboard getStatistic() {
+        Dashboard dashboard = new Dashboard();
+        dashboard.setCategories(this.findStatCategories());
+
+        dashboard.setArticleOutOfStock(this.findArticleOutOfStock());
+        return dashboard;
+    }
+
+    private List<ArticleDTO> findArticleOutOfStock() {
+        List<Article> articleOutOfStock = articleRepository.findArticleOutOfStock();
+        return articleMapper.toDto(articleOutOfStock);
+    }
+
+    private List<StatisticsCount> findStatCategories() {
+        List<StatisticsCount> statCategorie = articleRepository.findStatCategorie();
+        statCategorie.add(new StatisticsCount("Total", articleRepository.count()));
+        return statCategorie;
+    }
+
     private List<String> inventaireExcel(MultipartFile uploadFile) {
         return null;
     }
@@ -163,7 +187,7 @@ public class ArticleServiceImpl implements ArticleService {
     private void processInvenataireLine(String line) {
         String[] values = line.split(",");
 
-        Article article = articleRepository.findById(Long.valueOf(values[0])).orElseThrow();
+        Article article = articleRepository.findByCode(values[0]).orElseThrow();
         article.setQte(Double.valueOf(values[1]));
         articleRepository.save(article);
     }
@@ -194,13 +218,20 @@ public class ArticleServiceImpl implements ArticleService {
 
     private void processUploadLine(String line) throws Exception {
         String[] values = line.split(",");
+
         ArticleDTO article = new ArticleDTO();
-        article.setNom(values[0]);
-        article.setQte(Double.valueOf(values[1]));
-        article.setPrixAchat(Double.valueOf(values[2]));
-        Optional<Category> category = this.categoryRepository.findById(Long.valueOf(values[3]));
+
+        if (!StringUtils.isEmpty(values[0])) {
+            Article articleSaved = articleRepository.findByCode(values[0]).orElseThrow(() -> new Exception("Code not found"));
+            article.setId(articleSaved.getId());
+        }
+
+        article.setNom(values[1]);
+        article.setQte(Double.valueOf(values[2]));
+        article.setPrixAchat(Double.valueOf(values[3]));
+        Optional<Category> category = this.categoryRepository.findById(Long.valueOf(values[4]));
         article.setCategory(categoryMapper.toDto(category.orElseThrow()));
-        article.setDescription(values[4]);
+        article.setDescription(values[5]);
         save(article);
     }
 }

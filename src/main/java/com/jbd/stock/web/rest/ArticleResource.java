@@ -5,11 +5,13 @@ import com.jbd.stock.service.ArticleQueryService;
 import com.jbd.stock.service.ArticleService;
 import com.jbd.stock.service.criteria.ArticleCriteria;
 import com.jbd.stock.service.dto.ArticleDTO;
+import com.jbd.stock.service.dto.Dashboard;
 import com.jbd.stock.utils.Utils;
 import com.jbd.stock.web.rest.errors.BadRequestAlertException;
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,7 +20,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -247,5 +251,19 @@ public class ArticleResource {
             .created(new URI("/api/admin/users/" + "ok"))
             .headers(HeaderUtil.createAlert(applicationName, "stockwayApp.article.import", "ok"))
             .body(rejectedLine);
+    }
+
+    @GetMapping("/articles-dashboard")
+    public Dashboard getDashboard(
+        @RequestParam(required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateDebut,
+        @RequestParam(required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateFin,
+        @RequestParam(required = false) String loginClient,
+        @RequestParam(required = false) Long idLivreur
+    ) {
+        log.debug("REST request to get Dashboard ");
+
+        Dashboard dashboard = articleService.getStatistic();
+
+        return dashboard;
     }
 }

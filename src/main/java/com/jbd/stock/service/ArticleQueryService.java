@@ -67,19 +67,23 @@ public class ArticleQueryService extends QueryService<Article> {
         if (statusF != null && statusF != 0) {
             specification = specification.and(hasCategory(statusF));
         }
-        // todo search for ids
+
         if (search != null && !search.isEmpty()) {
-            specification = specification.or(hasWord("nom", search.toLowerCase()));
+            Specification<Article> specificationSertch = Specification.where(null);
+
+            specificationSertch = specificationSertch.or(hasWord("nom", search.toLowerCase()));
 
             if (NumberUtils.isCreatable(search.trim())) {
-                specification = specification.or(hadId(Long.valueOf(search)));
+                specificationSertch = specificationSertch.or(hasWord("code", search.toLowerCase()));
             }
+
+            specification = specification.and(specificationSertch);
         }
         return articleRepository.findAll(specification, page).map(articleMapper::toDto);
     }
 
     public static Specification<Article> hasCategory(Long isCategory) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.in(root.get("id").get("id")).value(isCategory);
+        return (root, query, criteriaBuilder) -> criteriaBuilder.in(root.get("category").get("id")).value(isCategory);
     }
 
     public static Specification<Article> hadId(Long id) {

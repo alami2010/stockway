@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    <h3>Exportation des articles</h3>
+    <h3><span jhiTranslate="stockwayApp.article.export"></span></h3>
 
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
-          <label for="exampleSelect1" class="col-form-label">Categorie</label>
+          <label for="exampleSelect1" class="col-form-label"> <span jhiTranslate="stockwayApp.article.category"> </span></label>
           <select [(ngModel)]="currentStatusFilter" class="form-select" id="exampleSelect1">
-            <option value="0">Toutes les catégories</option>
+            <option value="0"><span jhiTranslate="stockwayApp.article.tout_category"> </span></option>
             <option *ngFor="let category of categories" [value]="category.id">{{ category.libelle }}</option>
           </select>
         </div>

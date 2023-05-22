@@ -23,10 +23,27 @@ Main page styles
 }
 
 .logo-app2 {
-  height: 345px;
+  height: 150px;
   width: 100%;
   display: inline-block;
   vertical-align: middle;
   background: url('../../content/images/logo.png') no-repeat center center;
   background-size: contain;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.text-purple {
+  color: #94618e;
+}
+
+.bg-purple {
+  background-color: var(--primary);
+  color: #94618e;
 }

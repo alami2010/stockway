@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -55,11 +56,11 @@ public class Utils {
 
     public static File generateCsvFileForUploadArticle() throws IOException {
         File tempFile = File.createTempFile("article-x", ".csv");
-        String[] HEADERS = { "Nom Article", "Qte", "prix ", "Code Catégorie", "Description" };
+        String[] HEADERS = { "Code Article", "Nom Article", "Qté", "prix ", "Code Catégorie", "Description" };
 
         FileWriter out = new FileWriter(tempFile, StandardCharsets.UTF_8);
         CSVPrinter printer = new CSVPrinter(out, CSVFormat.DEFAULT.withHeader(HEADERS));
-        printer.printRecord("example article", "20", "2000", "2", "ceci est une description");
+        printer.printRecord("PO0000001", "example article", "20", "2000", "2", "ceci est une description");
         printer.close();
         return tempFile;
     }
@@ -106,5 +107,14 @@ public class Utils {
         printer.printRecord("1", "20");
         printer.close();
         return tempFile;
+    }
+
+    public static String getCode(Long id, Category category) {
+        String prefix = category != null ? category.getLibelle().toUpperCase().substring(0, 2) : "AR";
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("ddMMyy");
+        String currentDay = date.format(formatters);
+
+        return prefix + currentDay + id.toString();
     }
 }

@@ -1,6 +1,7 @@
 package com.jbd.stock.service;
 
 import com.jbd.stock.service.dto.ArticleDTO;
+import com.jbd.stock.service.dto.Dashboard;
 import com.jbd.stock.web.rest.EXPORT_FILE_TYPE;
 import java.io.File;
 import java.io.IOException;
@@ -68,4 +69,6 @@ public interface ArticleService {
     File downloadHistory(Long categoryId) throws IOException;
 
     List<String> porocessIventaire(MultipartFile uploadFile, boolean isCsv) throws IOException;
+
+    Dashboard getStatistic();
 }
