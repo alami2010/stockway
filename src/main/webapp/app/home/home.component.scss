@@ -23,7 +23,7 @@ Main page styles
 }
 
 .logo-app2 {
-  height: 150px;
+  height: 100px;
   width: 100%;
   display: inline-block;
   vertical-align: middle;
@@ -35,15 +35,14 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-.justify {
-  text-align: justify;
+.countx {
+  font-size: 2.5em;
+  line-height: 64px;
+  color: #323c43;
 }
 
-.text-purple {
-  color: #94618e;
-}
-
-.bg-purple {
-  background-color: var(--primary);
-  color: #94618e;
+.okok {
+  background: linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%) !important;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #87e0fd), color-stop(40%, #53cbf1), color-stop(100%, #05abe0));
+  height: 10px !important;
 }

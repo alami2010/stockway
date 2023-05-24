@@ -28,6 +28,7 @@ import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { NgxLoadingModule } from 'ngx-loading';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { NgxLoadingModule } from 'ngx-loading';
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-', caseSensitive: true }),
     TranslationModule,
     NgxQRCodeModule,
+    GoogleChartsModule,
     NgxLoadingModule.forRoot({}),
   ],
   providers: [

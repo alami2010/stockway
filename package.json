@@ -89,6 +89,7 @@
     "@ngx-translate/http-loader": "7.0.0",
     "@popperjs/core": "2.11.6",
     "@techiediaries/ngx-qrcode": "^9.1.0",
+    "angular-google-charts": "^2.2.3",
     "bootstrap": "5.2.0",
     "bootswatch": "5.2.0",
     "dayjs": "1.11.5",

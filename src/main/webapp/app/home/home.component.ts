@@ -7,6 +7,7 @@ import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
 import { ArticleService } from '../entities/article/service/article.service';
 import { IDashboard } from './dashboard.model';
+import { ChartType } from 'angular-google-charts';
 
 @Component({
   selector: 'jhi-home',
@@ -18,6 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   statistic: IDashboard = { categories: [], articleOutOfStock: [] };
 
   private readonly destroy$ = new Subject<void>();
+  myData: any[] = [];
+  okxx: ChartType = ChartType.Bar;
 
   constructor(private accountService: AccountService, private articleService: ArticleService, private router: Router) {}
 
@@ -36,6 +39,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private process(statistic: IDashboard) {
     console.info(statistic);
+
+    this.myData = statistic.categories.filter(value => value.value != 'Total').map(value => [value.value, value.count]);
+
     return (this.statistic = statistic);
   }
 
